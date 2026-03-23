@@ -3,60 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple Website</title>
+    <title>Hariom Yadav | Terminal</title>
     <style>
-        /* This is the CSS - the "paint" for your house */
+        :root {
+            --green: #00FF41;
+            --dark: #0D0208;
+        }
         body {
-            font-family: sans-serif;
+            background-color: var(--dark);
+            color: var(--green);
+            font-family: 'Courier New', Courier, monospace;
+            padding: 40px 20px;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
         }
-        header {
-            background: #333;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
+        .container { max-width: 800px; margin: auto; }
+        
+        /* Profile Section */
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border: 2px solid var(--green);
+            filter: grayscale(100%) brightness(1.2) contrast(1.2);
+            margin-bottom: 20px;
         }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 2rem;
-            background: #fff;
+
+        /* Links */
+        .links a {
+            color: var(--green);
+            text-decoration: none;
+            margin-right: 15px;
+            border: 1px solid var(--green);
+            padding: 5px 10px;
         }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.8rem;
-            color: #777;
+        .links a:hover { background: var(--green); color: var(--dark); }
+
+        .divider { border-bottom: 2px dashed var(--green); margin: 40px 0; }
+
+        /* Projects */
+        .project-card {
+            margin-bottom: 30px;
+            border-left: 3px solid var(--green);
+            padding-left: 15px;
         }
+        .project-media { 
+            width: 100%; 
+            max-width: 500px; 
+            margin-top: 10px; 
+            border: 1px solid #333; 
+        }
+        h1, h2 { text-transform: uppercase; letter-spacing: 2px; }
+        .cursor { animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     </style>
 </head>
 <body>
 
+<div class="container">
     <header>
-        <h1>Welcome to My Website</h1>
+        <img src="your-photo.jpg" alt="Hariom Yadav" class="profile-img">
+        <h1>> HARIOM_YADAV<span class="cursor">_</span></h1>
+        <p>BCA Student | Tech Enthusiast | Systems Explorer</p>
+        
+        <div class="links">
+            <a href="https://x.com/your-profile">X / Twitter</a>
+            <a href="mailto:your-email@gmail.com">Mail</a>
+            <a href="https://github.com/your-username">GitHub</a>
+            <a href="https://linkedin.com/in/your-profile">LinkedIn</a>
+        </div>
     </header>
 
-    <div class="container">
-        <h2>About This Page</h2>
-        <p>This is a basic HTML5 template. It uses <strong>HTML</strong> for the structure and <strong>CSS</strong> for the layout and colors.</p>
-        
-        <h3>Things I like:</h3>
-        <ul>
-            <li>Clean code</li>
-            <li>Fast loading times</li>
-            <li>Dark mode (coming soon!)</li>
-        </ul>
+    <div class="divider"></div>
 
-        <p>Building a website is easier than it looks. You just start with a skeleton and add muscles and skin as you go.</p>
-    </div>
+    <section id="project-list">
+        <h2>// DEPLOYED_PROJECTS</h2>
+        </section>
+</div>
 
-    <footer>
-        <p>&copy; 2026 My Awesome Site</p>
-    </footer>
+<script>
+    // EASY UPDATE SECTION: 
+    // Just add a new object { } to this list to update your site!
+    const myProjects = [
+        {
+            title: "Multiplayer Snake Game",
+            desc: "A Python Turtle project with custom collision mechanics.",
+            media: "https://via.placeholder.com/500x280", // Replace with image link or video
+            link: "#"
+        },
+        {
+            title: "Instagram Higher/Lower",
+            desc: "Logic-based game comparing Indian celebrity follower counts.",
+            media: "https://via.placeholder.com/500x280",
+            link: "#"
+        }
+    ];
+
+    const projectContainer = document.getElementById('project-list');
+
+    myProjects.forEach(proj => {
+        const html = `
+            <div class="project-card">
+                <h3>${proj.title}</h3>
+                <p>${proj.desc}</p>
+                <img src="${proj.media}" class="project-media" alt="preview">
+                <br><br>
+                <a href="${proj.link}" style="color:white;">[ VIEW SOURCE ]</a>
+            </div>
+        `;
+        projectContainer.innerHTML += html;
+    });
+</script>
 
 </body>
 </html>
