@@ -3,113 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hariom Yadav | Terminal</title>
+    <title>HARIOM YADAV | ROOT</title>
     <style>
+        /* Based on your common.css & index.css but upgraded for Full Screen */
         :root {
-            --green: #00FF41;
-            --dark: #0D0208;
+            --color-bg: #0d0208;
+            --color-fg: #00ff41; /* Hacker Green */
+            --color-link: #ff3366;
+            --spacing-md: 20px;
+            --spacing-lg: 40px;
+            --font-family: 'Courier New', monospace;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            background-color: var(--dark);
-            color: var(--green);
-            font-family: 'Courier New', Courier, monospace;
-            padding: 40px 20px;
+            background-color: var(--color-bg);
+            color: var(--color-fg);
+            font-family: var(--font-family);
             line-height: 1.6;
+            padding: var(--spacing-md);
         }
-        .container { max-width: 800px; margin: auto; }
+
+        /* Scanline CRT Effect */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            z-index: 100;
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+
+        /* Top Section: Identity */
+        header {
+            max-width: 800px;
+            margin: 40px 0;
+        }
+
+        h1 { font-size: 3rem; letter-spacing: -2px; text-transform: uppercase; }
         
-        /* Profile Section */
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border: 2px solid var(--green);
-            filter: grayscale(100%) brightness(1.2) contrast(1.2);
-            margin-bottom: 20px;
+        .intro-text { 
+            font-size: 1.2rem; 
+            margin: 10px 0;
+            border-right: 2px solid var(--color-fg);
+            display: inline-block;
+            padding-right: 5px;
         }
 
-        /* Links */
-        .links a {
-            color: var(--green);
-            text-decoration: none;
-            margin-right: 15px;
-            border: 1px solid var(--green);
-            padding: 5px 10px;
+        .contacts { margin: 20px 0; }
+        .contacts a { 
+            color: var(--color-link); 
+            text-decoration: none; 
+            margin-right: 20px; 
+            font-weight: bold;
+            border: 1px solid var(--color-link);
+            padding: 4px 10px;
         }
-        .links a:hover { background: var(--green); color: var(--dark); }
+        .contacts a:hover { background: var(--color-link); color: white; }
 
-        .divider { border-bottom: 2px dashed var(--green); margin: 40px 0; }
+        /* Navigation / Sidebar-style line */
+        nav {
+            border-top: 1px solid var(--color-fg);
+            border-bottom: 1px solid var(--color-fg);
+            padding: 10px 0;
+            margin: 40px 0;
+            display: flex;
+            gap: 30px;
+        }
+        nav a { color: var(--color-fg); text-decoration: none; text-transform: uppercase; font-size: 0.9rem; }
+        nav a:hover { text-decoration: underline; }
 
-        /* Projects */
+        /* Project Section - USES WHOLE SCREEN */
+        .section-title { 
+            font-size: 1.5rem; 
+            margin-bottom: 30px; 
+            display: flex; 
+            align-items: center; 
+        }
+        .section-title::after { content: ""; flex: 1; height: 1px; background: var(--color-fg); margin-left: 20px; opacity: 0.3; }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Large cards */
+            gap: 30px;
+            width: 100%;
+        }
+
         .project-card {
-            margin-bottom: 30px;
-            border-left: 3px solid var(--green);
-            padding-left: 15px;
+            border: 1px solid #222;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: 0.3s;
         }
-        .project-media { 
-            width: 100%; 
-            max-width: 500px; 
-            margin-top: 10px; 
-            border: 1px solid #333; 
+        .project-card:hover { border-color: var(--color-fg); background: rgba(0, 255, 65, 0.05); }
+
+        .media-box {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            margin-bottom: 15px;
+            overflow: hidden;
         }
-        h1, h2 { text-transform: uppercase; letter-spacing: 2px; }
-        .cursor { animation: blink 1s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .media-box iframe, .media-box img { width: 100%; height: 100%; border: none; object-fit: cover; }
+
+        .project-info h3 { margin-bottom: 10px; color: #fff; }
+        .project-info p { font-size: 0.9rem; color: #aaa; margin-bottom: 15px; }
+        
+        .btn-run {
+            color: var(--color-fg);
+            border: 1px solid var(--color-fg);
+            padding: 5px 15px;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 600px) {
+            .project-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <img src="your-photo.jpg" alt="Hariom Yadav" class="profile-img">
-        <h1>> HARIOM_YADAV<span class="cursor">_</span></h1>
-        <p>BCA Student | Tech Enthusiast | Systems Explorer</p>
+        <h1>HARIOM YADAV</h1>
+        <div class="intro-text">
+            i like to build | somthing i like data | bla bla only
+        </div>
         
-        <div class="links">
-            <a href="https://x.com/your-profile">X / Twitter</a>
-            <a href="mailto:your-email@gmail.com">Mail</a>
-            <a href="https://github.com/your-username">GitHub</a>
-            <a href="https://linkedin.com/in/your-profile">LinkedIn</a>
+        <div class="contacts">
+            <a href="mailto:yourgmail@gmail.com">GMAIL</a>
+            <a href="https://x.com/yourhandle">X_CORP</a>
+            <a href="https://github.com/youruser">GITHUB</a>
         </div>
     </header>
 
-    <div class="divider"></div>
+    <nav>
+        <a href="#projects">// PROJECTS</a>
+        <a href="#">// BLOGS</a>
+        <a href="#">// ARCHIVE</a>
+        <a href="#">// SYSTEM_INFO</a>
+    </nav>
 
-    <section id="project-list">
-        <h2>// DEPLOYED_PROJECTS</h2>
+    <h2 class="section-title">DEPLOYED_OPERATIONS</h2>
+    
+    <section id="project-list" class="project-grid">
         </section>
 </div>
 
 <script>
-    // EASY UPDATE SECTION: 
-    // Just add a new object { } to this list to update your site!
+    /* EASY UPDATE SECTION 
+       To add a project: 
+       1. For YouTube: type is 'video', link is the 'embed' URL.
+       2. For Image: type is 'image', link is your photo path.
+    */
     const myProjects = [
         {
             title: "Multiplayer Snake Game",
-            desc: "A Python Turtle project with custom collision mechanics.",
-            media: "https://via.placeholder.com/500x280", // Replace with image link or video
-            link: "#"
+            desc: "Physics-based snake game built in Python. Features dual-control logic.",
+            type: "video", 
+            mediaLink: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Example YT link
+            projectURL: "#"
         },
         {
-            title: "Instagram Higher/Lower",
-            desc: "Logic-based game comparing Indian celebrity follower counts.",
-            media: "https://via.placeholder.com/500x280",
-            link: "#"
+            title: "Data Visualization Map",
+            desc: "Visualizing global datasets using Matplotlib and GeoPandas.",
+            type: "image",
+            mediaLink: "https://via.placeholder.com/800x450/003300/00ff41?text=Data+Map+Preview",
+            projectURL: "#"
+        },
+        {
+            title: "NewPipe Structural Clone",
+            desc: "An open-source approach to lightweight media streaming.",
+            type: "image",
+            mediaLink: "https://via.placeholder.com/800x450/111/00ff41?text=Open+Source+UI",
+            projectURL: "#"
         }
     ];
 
-    const projectContainer = document.getElementById('project-list');
+    const list = document.getElementById('project-list');
 
     myProjects.forEach(proj => {
-        const html = `
+        let mediaHtml = proj.type === 'video' 
+            ? `<iframe src="${proj.mediaLink}" allowfullscreen></iframe>`
+            : `<img src="${proj.mediaLink}" alt="Thumbnail">`;
+
+        list.innerHTML += `
             <div class="project-card">
-                <h3>${proj.title}</h3>
-                <p>${proj.desc}</p>
-                <img src="${proj.media}" class="project-media" alt="preview">
-                <br><br>
-                <a href="${proj.link}" style="color:white;">[ VIEW SOURCE ]</a>
+                <div class="media-box">${mediaHtml}</div>
+                <div class="project-info">
+                    <h3>${proj.title}</h3>
+                    <p>${proj.desc}</p>
+                    <a href="${proj.projectURL}" class="btn-run">EXECUTE_RUN()</a>
+                </div>
             </div>
         `;
-        projectContainer.innerHTML += html;
     });
 </script>
 
